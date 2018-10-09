@@ -3,7 +3,6 @@ using namespace std;
 
 
 int main() {
-	cout << "Gg";
 	int maxH = 0;
 	int maxM = 0;
 
