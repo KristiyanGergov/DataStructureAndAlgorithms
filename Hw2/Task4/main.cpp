@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
 int main() {
 	int q, n;
 
@@ -12,12 +11,19 @@ int main() {
 		cin >> n;
 		int* arr = new int[n];
 		int count = 0;
+		int maxElement = 0;
 
 		for (int j = 0; j < n; j++)
 		{
 			int num;
 			cin >> num;
 			arr[j] = num;
+
+			if (num >= maxElement)
+			{
+				maxElement = num;
+				continue;
+			}
 
 			for (int k = 0; k < j; k++)
 			{
@@ -27,10 +33,11 @@ int main() {
 				}
 			}
 		}
+
 		cout << count << endl;
 		delete[] arr;
-
 	}
+
 
 	return 0;
 }
