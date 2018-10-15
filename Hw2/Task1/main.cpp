@@ -80,6 +80,7 @@ void sort(int* array, int length)
 			if (current[0] < next[0])
 			{
 				swap(array[c], array[c + 1]);
+				flag = true;
 			}
 			else if (current[0] == next[0]) {
 
@@ -87,8 +88,11 @@ void sort(int* array, int length)
 
 				if (currentSmaller)
 					swap(array[c], array[c + 1]);
+				flag = true;
 			}
 		}
+		if (!flag)
+			break;
 	}
 }
 
