@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hw1_Task1", "Hw1_Task1\Hw1_Task1.vcxproj", "{92A89BE8-ADCD-414E-BA5A-F291E51EB1E1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hw1_Task1", "Task1\Hw1_Task1.vcxproj", "{92A89BE8-ADCD-414E-BA5A-F291E51EB1E1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hw1_Task2", "Hw1_Task2\Hw1_Task2.vcxproj", "{BDFCEAF5-B487-4442-86D6-121E6DDBD70E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hw1_Task2", "Task2\Hw1_Task2.vcxproj", "{BDFCEAF5-B487-4442-86D6-121E6DDBD70E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hw1_Task3", "Hw1_Task3\Hw1_Task3.vcxproj", "{56FCA636-C6DC-42D9-B92A-77B2A5167C16}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hw1_Task3", "Task3\Hw1_Task3.vcxproj", "{56FCA636-C6DC-42D9-B92A-77B2A5167C16}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hw1_Task4", "Hw1_Task4\Hw1_Task4.vcxproj", "{6C342C51-CCBB-42F3-91C4-222899D77236}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hw1_Task4", "Task4\Hw1_Task4.vcxproj", "{6C342C51-CCBB-42F3-91C4-222899D77236}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
