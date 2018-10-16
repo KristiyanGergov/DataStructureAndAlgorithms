@@ -78,7 +78,7 @@ void insertionSort(int* arr, int len) {
 
 //Merge
 void merge(int* arr, int l, int m, int r) {
-	
+
 	int i, j, k;
 
 	int n1 = m - l + 1;
@@ -130,7 +130,7 @@ void merge(int* arr, int l, int m, int r) {
 	delete[] R;
 }
 
-void mergeSort(int arr[], int l, int r) {
+void mergeSort(int* arr, int l, int r) {
 
 	if (l < r)
 	{
@@ -144,12 +144,41 @@ void mergeSort(int arr[], int l, int r) {
 }
 //Merge
 
+//Quick
+int partition(int* arr, int low, int high) {
+	int pivot = arr[high];
+	int i = (low - 1);
+
+	for (int j = low; j < high; j++)
+	{
+		if (arr[j] <= pivot)
+		{
+			i++;
+			swap(arr[i], arr[j]);
+		}
+	}
+	swap(arr[i + 1], arr[high]);
+	return (i + 1);
+}
+
+void quicksort(int* arr, int low, int high) {
+	if (low < high)
+	{
+		int pi = partition(arr, low, high);
+
+		quicksort(arr, low, pi - 1);
+		quicksort(arr, pi + 1, high);
+
+	}
+}
+//Quick
+
+
 int main() {
 
-	int arr[] = { 12, 11, 13, 5, 6, 7 };
-	int arr_size = sizeof(arr) / sizeof(arr[0]);
+	int arr[] = { 10, 30, 40, 50, 80, 90, 20 };
 
-	mergeSort(arr, 0, 5);
+	quicksort(arr, 0, 6);
 
 	print(arr, 6);
 
