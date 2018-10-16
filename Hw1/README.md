@@ -102,11 +102,11 @@ void bubbleSort(int* array, int length)
 
 Базова имплементация:
 
-void selectionSort(int * array){
+void selectionSort(int * array, int p){
     for(int i = 0; i < p; i++){
         int idx = i;
         for(int c = i + 1; c < p; c++){
-            if(array[c] < array[idx]>)
+            if(array[c] < array[idx])
             idx = c;
         }
         swap(array[i], array[idx]);
