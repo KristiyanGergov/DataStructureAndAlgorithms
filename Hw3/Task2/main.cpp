@@ -87,5 +87,6 @@ int main() {
 		cout << first << " " << last << endl;
 	}
 
+	delete[] arr;
 	return 0;
 }
