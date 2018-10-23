@@ -1,11 +1,7 @@
-#include <cmath>
-#include <cstdio>
-#include <vector>
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
-int findIndex(int* arr, int start, int end, int num) {
+int findIndex(long* arr, int start, int end, long num) {
 
 	if (start <= end)
 	{
@@ -13,6 +9,9 @@ int findIndex(int* arr, int start, int end, int num) {
 
 		if (arr[mid] == num)
 			return mid;
+		
+		if (mid == 0)
+			return -1;
 
 		if (arr[mid] > num)
 			return findIndex(arr, start, mid, num);
@@ -28,21 +27,21 @@ int main() {
 	int n;
 	cin >> n;
 
-	int* arr = new int[n];
+	long* arr = new long[n];
 
 	for (int i = 0; i < n; i++)
 	{
-		int curr;
+		long curr;
 		cin >> curr;
 		arr[i] = curr;
 	}
-
+	
 	int q;
 	cin >> q;
 
 	for (int i = 0; i < q; i++)
 	{
-		int num;
+		long num;
 		cin >> num;
 
 		int index = findIndex(arr, 0, n - 1, num);
