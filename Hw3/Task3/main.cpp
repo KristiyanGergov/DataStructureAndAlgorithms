@@ -46,10 +46,10 @@ int main() {
 
 	while (true)
 	{
-		int index = findMaxIndex(arr, n);
-		arr[index] -= k;
+		int maxIndex = findMaxIndex(arr, n);
+		arr[maxIndex] -= k;
 
-		bool allZeroes = reducåAll(arr, n, index);
+		bool allZeroes = reducåAll(arr, n, maxIndex);
 
 
 		if (allZeroes)
