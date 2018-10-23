@@ -71,5 +71,8 @@ int main() {
 
 	cout << findSum(heights, prices, n);
 
+	delete[] heights;
+	delete[] prices;
+
 	return 0;
 }

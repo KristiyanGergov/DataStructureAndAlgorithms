@@ -1,34 +1,54 @@
 #include <iostream>
+#include <math.h>
 using namespace std;
 
-int findDays(int* arr, int length, int t) {
-
-	while (true)
-	{
-		for (int i = 0; i < length; i++)
-		{
-			
-		}
-	}
+int* populateArr(int len) {
+	int* arr = new int[len];
+	for (int i = 0; i < len; i++)
+		arr[i] = i + 1;
+	return arr;
 }
 
+void findDays(int* arr, int l, int r, int & count) {
+	if (l <= r)
+	{
+		if (arr[r] == 2 || arr[r] == 3)
+		{
+			count += 2;
+			return;
+		}
+
+		int m = ceil((r + 1 + l) / 2.0);
+
+		int midNum = arr[m - 1];
+
+		for (int i = m; i <= r; i++)
+		{
+			arr[i] -= midNum;
+		}
+		count++;
+
+		findDays(arr, m, r, count);
+	}
+}
 
 int main() {
 	int t;
 
 	cin >> t;
-	
+
 	for (int i = 0; i < t; i++)
 	{
 		int n;
 		cin >> n;
 
-		int* arr = new int[n];
+		int * arr = populateArr(n);
 
-		for (int i = 0; i < n; i++)
-			arr[i] = i + 1;
+		int val = 0;
 
-		cout << findDays(arr, i, t);
+		findDays(arr, 0, n - 1, val);
+
+		cout << val << endl;
 
 		delete[] arr;
 	}
