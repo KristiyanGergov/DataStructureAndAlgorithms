@@ -1,27 +1,35 @@
 #include <iostream>
 using namespace std;
 
-int findMaxIndex(int* arr, int length) {
-	int max = 0;
-
-	for (int i = 0; i < length; i++)
-	{
-		if (arr[i] > arr[max])
-		{
-			max = i;
-		}
-	}
-	return max;
-}
-
-bool reducåAll(int* arr, int len, int indexNotToReduce) {
+bool reduceAll(int* arr, int len, int k, int index) {
 	bool allZeroes = true;
+	int driyersLeft = index;
+
 	for (int i = 0; i < len; i++)
 	{
-		if (i != indexNotToReduce && arr[i] > 0)
+
+		if (arr[i] - index > 0)
 		{
-			allZeroes = false;
-			arr[i]--;
+			int count = 1;
+			bool flag = false;
+			while (driyersLeft > 0)
+			{
+				driyersLeft--;
+				if (arr[i] - k * count - (index - count) > 0)
+				{
+					count++;
+				}
+				else
+				{
+					flag = true;
+					break;
+				}
+			}
+			if (!flag)
+			{
+				allZeroes = false;
+				break;
+			}
 		}
 	}
 	return allZeroes;
@@ -42,23 +50,28 @@ int main() {
 		cin >> num;
 		arr[i] = num;
 	}
-	int counter = 0;
 
-	while (true)
+
+	int index = 1;
+	bool allZeroes = false;
+
+	while (!allZeroes)
 	{
-		int maxIndex = findMaxIndex(arr, n);
-		arr[maxIndex] -= k;
-
-		bool allZeroes = reducåAll(arr, n, maxIndex);
-
+		bool flag = false;
+		allZeroes = reduceAll(arr, n, k, index);
 
 		if (allZeroes)
 			break;
 
-		counter++;
+		index *= 2;
 	}
 
-	cout << counter;
+	while (allZeroes && index > 0) {
+		allZeroes = reduceAll(arr, n, k, index);
+		index--;
+	}
+
+	cout << index + 2;
 
 	delete[] arr;
 	return 0;
