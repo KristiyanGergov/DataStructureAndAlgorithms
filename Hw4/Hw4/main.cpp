@@ -3,43 +3,65 @@
 using namespace std;
 
 class Node {
+<<<<<<< HEAD
 public:
+=======
+private:
+>>>>>>> 8d8e5af7d101d424cc4d92d30b03021a61e7d3ba
 	bool initialized;
 	int data;
 	Node* next;
+public:
+	int getData();
+	bool getInitialized();
+	Node* getNext();
+	
+	void setData(const int);
+	void setInitialized(const bool);
+	void setNext(Node*);
 };
 
 class LinkedList {
 private:
 	Node head;
+	int size;
 public:
 	void add(int data);
 	int getAt(int index);
+	int getSize();
 };
 
 void LinkedList::add(int curr)
 {
+	size++;
 	Node* temp = new Node();
-	temp->data = curr;
-	temp->next = nullptr;
-	temp->initialized = true;
+	temp->setData(curr);
+	temp->setNext(nullptr);
+	temp->setInitialized(true);
 
-	if (!this->head.initialized)
+	if (!this->head.getInitialized())
 	{
 		this->head = *temp;
-		this->head.next = nullptr;
+		this->head.setNext(nullptr);
 	}
 	else
 	{
 		Node* curr = &head;
+<<<<<<< HEAD
 		bool t = curr;
 		while (t && curr->next != nullptr)
 		{
 			curr = curr->next;
 		}
 		curr->next = temp;
+=======
+		
+		while (curr && curr->getNext() != nullptr)
+			curr = curr->getNext();
+		
+		curr->setNext(temp);
+>>>>>>> 8d8e5af7d101d424cc4d92d30b03021a61e7d3ba
 	}
-	delete[] temp;
 }
 
 int LinkedList::getAt(int index)
@@ -47,28 +69,82 @@ int LinkedList::getAt(int index)
 	Node curr = head;
 	for (int i = 0; i < index; i++)
 	{
-		if (curr.next != nullptr)
-			curr = *curr.next;
+		if (curr.getNext() != nullptr)
+			curr = *curr.getNext();
 		else
 			return -1;
 	}
-	return curr.data;
+	return curr.getData();
+}
+
+int LinkedList::getSize()
+{
+	return this->size;
 }
 
 int main() {
-	string input1;
+	string input;
 	LinkedList list = LinkedList();
-	while (getline(cin, input1))
+
+	while (getline(cin, input))
 	{
-		if (input1.empty())
+		if (input.empty())
 			break;
-		int curr = stoi(input1);
+		int curr = stoi(input);
 		list.add(curr);
 	}
 
-	int f = list.getAt(0);
-	int s = list.getAt(1);
-	int t = list.getAt(2);
+	int min = INT32_MAX;
+	int max = INT32_MIN;
+	int sum = 0;
+	
+	for (int i = 0; i < list.getSize(); i++)
+	{
+		int current = list.getAt(i);
+		if (current <= min)
+		{
+			min = current;
+		}
+		if (current >= max)
+		{
+			max = current;
+		}
+		sum += current;
+	}
+
+	cout << min << " ";
+	cout << max << " ";
+	cout << sum << " ";
 
 	return 0;
+}
+
+int Node::getData()
+{
+	return this->data;
+}
+
+bool Node::getInitialized()
+{
+	return this->initialized;
+}
+
+Node * Node::getNext()
+{
+	return this->next;
+}
+
+void Node::setData(const int data)
+{
+	this->data = data;
+}
+
+void Node::setInitialized(const bool initialized)
+{
+	this->initialized = initialized;
+}
+
+void Node::setNext(Node * next)
+{
+	this->next = next;
 }
