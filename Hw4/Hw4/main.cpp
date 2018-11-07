@@ -2,7 +2,8 @@
 #include <string>
 using namespace std;
 
-struct Node {
+class Node {
+public:
 	bool initialized;
 	int data;
 	Node* next;
@@ -31,7 +32,7 @@ void LinkedList::add(int curr)
 	else
 	{
 		Node* curr = &head;
-		bool t = curr->next;
+		bool t = curr;
 		while (t && curr->next != nullptr)
 		{
 			curr = curr->next;
