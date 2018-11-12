@@ -8,7 +8,7 @@ struct Point
 	int y;
 };
 
-struct path
+struct Path
 {
 	Point point;
 	int dist;
@@ -37,13 +37,13 @@ int findShortestPath(int** matrix, Point dest, const int m, const int n)
 
 	visited[0][0] = true;
 
-	queue<path> result;
+	queue<Path> result;
 
 	result.push({ { 0, 0 }, 0 });
 
 	while (!result.empty())
 	{
-		path curr = result.front();
+		Path curr = result.front();
 		Point point = curr.point;
 
 		if (point.x == dest.x && point.y == dest.y)
@@ -59,7 +59,7 @@ int findShortestPath(int** matrix, Point dest, const int m, const int n)
 			if (isValid(row, col, n, m) && matrix[row][col] == 0 && !visited[row][col])
 			{
 				visited[row][col] = true;
-				path Adjcell = { { row, col }, curr.dist + 1 };
+				Path Adjcell = { { row, col }, curr.dist + 1 };
 				result.push(Adjcell);
 			}
 		}
