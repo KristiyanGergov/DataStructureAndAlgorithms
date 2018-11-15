@@ -1,8 +1,3 @@
-#include <iostream>
-#include <string>
-
-using namespace std;
-
 template <typename T>
 struct Node {
 	T data;
@@ -20,8 +15,6 @@ public:
 	bool pop();
 	T top();
 	bool empty();
-	int getSize();
-	void reverse();
 };
 
 template<typename T>
@@ -62,13 +55,7 @@ T stack<T>::top()
 template<typename T>
 bool stack<T>::empty()
 {
-	return getSize() == 0;
-}
-
-template<typename T>
-int stack<T>::getSize()
-{
-	return this->size;
+	return this->size == 0;
 }
 
 template<typename T>
@@ -91,12 +78,6 @@ void stack<T>::reverse()
 }
 
 int main() {
-	string input = "abcbd";
-	stack<char> res = stack<char>();
 
-	for (int i = 0; i < input.length(); i++)
-		res.push(input.at(i));
-
-	res.reverse();
 	return 0;
 }

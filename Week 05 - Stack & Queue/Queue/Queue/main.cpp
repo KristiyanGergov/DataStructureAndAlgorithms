@@ -1,0 +1,113 @@
+#include <iostream>
+
+using namespace std;
+
+template <typename T>
+struct Node {
+	T data;
+	Node* next;
+};
+
+template <typename T>
+class queue {
+private:
+	int size;
+	Node<T>* head;
+public:
+	queue();
+	void push(T data);
+	bool pop();
+	T top();
+	bool empty();
+};
+
+template<typename T>
+queue<T>::queue()
+{
+	this->size = 0;
+}
+
+template<typename T>
+void queue<T>::push(T data)
+{
+	Node<T>* curr = new Node<T>();
+	curr->data = data;
+
+	if (!head)
+	{
+		this->head = curr;
+	}
+	else {
+		Node<T>* temp = head;
+
+		while (temp && temp->next)
+		{
+			temp = temp->next;
+		}
+		temp->next = curr;
+	}
+	size++;
+}
+
+template<typename T>
+bool queue<T>::pop()
+{
+	if (size == 0)
+		return false;
+
+	Node<T>* curr = head;
+	head = head->next;
+	delete curr;
+	size--;
+	return true;
+}
+
+template<typename T>
+T queue<T>::top()
+{
+	return head->data;
+}
+
+template<typename T>
+bool queue<T>::empty()
+{
+	return this->size == 0;
+}
+
+int main() {
+	int n;
+
+	cin >> n;
+
+	int addend = 2;
+	int size = n;
+
+	queue<int> res;
+
+	res.push(1);
+	res.push(n);
+
+	while (size > 1)
+	{
+		int top = res.top();
+		res.pop();
+		int back = res.top();
+		res.pop();
+
+		if (size % 2 == 0)
+			back -= addend / 2;
+		else
+			top += addend;
+
+
+		res.push(top);
+		res.push(back);
+
+		size /= 2;
+		addend *= 2;
+	}
+
+	cout << res.top();
+
+	return 0;
+}
