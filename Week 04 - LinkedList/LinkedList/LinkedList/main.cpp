@@ -1,3 +1,7 @@
+#include <iostream>
+
+using namespace std;
+
 template <typename T>
 struct Node {
 	Node* next;
@@ -14,7 +18,7 @@ private:
 public:
 	int getSize();
 	void add(T data);
-	bool remove(T index);
+	bool remove(int index);
 	void reverse();
 	T get(int index);
 };
@@ -50,7 +54,7 @@ void LinkedList<T>::add(T data)
 }
 
 template<typename T>
-bool LinkedList<T>::remove(T index)
+bool LinkedList<T>::remove(int index)
 {
 	if (index > size - 1)
 		return false;
@@ -77,16 +81,26 @@ bool LinkedList<T>::remove(T index)
 template<typename T>
 void LinkedList<T>::reverse()
 {
-	Node<int>* curr = tail;
+	Node<T> *current = head;
+	Node<T> *prev = nullptr, *next = nullptr;
 
-	while (tail->prev)
+	bool tr = true;
+
+	while (current)
 	{
-		tail->next = tail->prev;
-		tail = tail->next;
+		next = current->next;
+
+		current->next = prev;
+
+		prev = current;
+		if (tr) tail = current;
+
+		current = next;
+		tr = false;
 	}
 
-	tail = head;
-	tail->next = nullptr;
+	tail = current;
+	head = prev;
 }
 
 template<typename T>
@@ -94,7 +108,7 @@ T LinkedList<T>::get(int index)
 {
 	if (index > size - 1)
 	{
-		return;
+		throw out_of_range("Index out of range!");
 	}
 	Node<int>* curr = head;
 	for (int i = 0; i < index; i++)
@@ -116,7 +130,16 @@ LinkedList<T> merge(LinkedList<T> first, LinkedList<T> second) {
 int main() {
 	LinkedList<int> list = LinkedList<int>();
 
-	list.get(0);
+	list.add(1);
+	list.add(2);
+	list.add(3);
+	list.add(4);
+	list.add(5);
+	list.add(6);
+
+	list.reverse();
+	bool success = list.remove(6);
+	int size = list.getSize();
 
 	return 0;
 }
