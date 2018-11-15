@@ -58,26 +58,8 @@ bool stack<T>::empty()
 	return this->size == 0;
 }
 
-template<typename T>
-void stack<T>::reverse()
-{
-	stack<T>* res = new stack<T>();
-
-	while (this->empty())
-	{
-		res->push(this->top());
-		this->pop();
-	}
-
-	while (!res->empty())
-	{
-		this->push(res->top());
-		res->pop();
-	}
-	delete res;
-}
-
 int main() {
 
+	stack<int> test;
 	return 0;
 }

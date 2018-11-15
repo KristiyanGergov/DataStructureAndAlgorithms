@@ -13,7 +13,6 @@ template <typename T>
 class LinkedList {
 private:
 	Node<T>* head;
-	Node<T>* tail;
 	int size;
 public:
 	int getSize();
@@ -40,7 +39,6 @@ void LinkedList<T>::add(T data)
 	{
 		val->prev = nullptr;
 		head = val;
-		tail = val;
 	}
 	else
 	{
@@ -49,7 +47,6 @@ void LinkedList<T>::add(T data)
 			curr = curr->next;
 		val->prev = curr;
 		curr->next = val;
-		tail = val;
 	}
 }
 
@@ -84,8 +81,6 @@ void LinkedList<T>::reverse()
 	Node<T> *current = head;
 	Node<T> *prev = nullptr, *next = nullptr;
 
-	bool tr = true;
-
 	while (current)
 	{
 		next = current->next;
@@ -93,13 +88,9 @@ void LinkedList<T>::reverse()
 		current->next = prev;
 
 		prev = current;
-		if (tr) tail = current;
-
 		current = next;
-		tr = false;
 	}
 
-	tail = current;
 	head = prev;
 }
 
