@@ -15,6 +15,7 @@ public:
 	bool pop();
 	T top();
 	bool empty();
+	void reverse();
 };
 
 template<typename T>
@@ -53,13 +54,38 @@ T stack<T>::top()
 }
 
 template<typename T>
+void stack<T>::reverse()
+{
+	Node<T> *current = head;
+	Node<T> *prev = nullptr, *next = nullptr;
+
+	while (current)
+	{
+		next = current->next;
+
+		current->next = prev;
+
+		prev = current;
+		current = next;
+	}
+
+	head = prev;
+}
+
+template<typename T>
 bool stack<T>::empty()
 {
 	return this->size == 0;
 }
 
 int main() {
-
 	stack<int> test;
+	test.push(1);
+	test.push(2);
+	test.push(3);
+	test.push(4);
+
+	test.reverse();
+	
 	return 0;
 }

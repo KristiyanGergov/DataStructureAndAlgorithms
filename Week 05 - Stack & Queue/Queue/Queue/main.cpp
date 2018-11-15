@@ -75,39 +75,16 @@ bool queue<T>::empty()
 }
 
 int main() {
-	int n;
-
-	cin >> n;
-
-	int addend = 2;
-	int size = n;
 
 	queue<int> res;
 
 	res.push(1);
-	res.push(n);
+	res.push(2);
+	res.push(3);
+	res.push(4);
+	res.push(5);
 
-	while (size > 1)
-	{
-		int top = res.top();
-		res.pop();
-		int back = res.top();
-		res.pop();
-
-		if (size % 2 == 0)
-			back -= addend / 2;
-		else
-			top += addend;
-
-
-		res.push(top);
-		res.push(back);
-
-		size /= 2;
-		addend *= 2;
-	}
-
-	cout << res.top();
+	res.pop();
 
 	return 0;
 }
