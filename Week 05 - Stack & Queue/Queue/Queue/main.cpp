@@ -19,6 +19,7 @@ public:
 	bool pop();
 	T top();
 	bool empty();
+	void reverse();
 };
 
 template<typename T>
@@ -74,6 +75,25 @@ bool queue<T>::empty()
 	return this->size == 0;
 }
 
+template<typename T>
+void queue<T>::reverse()
+{
+	Node<T> *current = head;
+	Node<T> *prev = nullptr, *next = nullptr;
+
+	while (current)
+	{
+		next = current->next;
+
+		current->next = prev;
+
+		prev = current;
+		current = next;
+	}
+
+	head = prev;
+}
+
 int main() {
 
 	queue<int> res;
@@ -84,6 +104,7 @@ int main() {
 	res.push(4);
 	res.push(5);
 
+	res.reverse();
 	res.pop();
 
 	return 0;
