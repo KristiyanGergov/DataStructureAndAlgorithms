@@ -72,7 +72,7 @@ int main() {
 
 	cin >> n;
 
-	stack<long> whiteStones;
+	stack<long long> whiteStones;
 
 	char* stone = new char[5];
 
@@ -88,9 +88,9 @@ int main() {
 			whiteStones.push(k);
 		}
 		else if (strcmp(stone, green) == 0) {
-			long sum = 0;
+			long long sum = 0;
 
-			for (long i = 0; i < k; i++)
+			for (long long i = 0; i < k; i++)
 			{
 				sum += whiteStones.top();
 				whiteStones.pop();
@@ -98,9 +98,9 @@ int main() {
 			whiteStones.push(sum);
 		}
 		else if (strcmp(stone, blue) == 0) {
-			long max = 0;
+			long long max = 0;
 
-			for (long i = 0; i < k; i++)
+			for (long long i = 0; i < k; i++)
 			{
 				if (max < whiteStones.top())
 					max = whiteStones.top();
@@ -111,7 +111,7 @@ int main() {
 		}
 	}
 
-	stack<long> res;
+	stack<long long> res;
 	while (!whiteStones.empty()) 
 	{
 		res.push(whiteStones.top());
