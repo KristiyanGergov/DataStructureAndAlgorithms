@@ -141,7 +141,7 @@ public:
 
 	void group(int a, int b) {
 		long sum = 0;
-		if (a < 0 || a > size - 1 || b < 0 || b > size - 1)
+		if (a < 0 || a > size - 1 || b < 0 || b > size - 1 || a > b)
 		{
 			cout << "fail_grouping";
 			return;
