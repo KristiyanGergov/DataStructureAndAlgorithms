@@ -36,44 +36,44 @@ public:
 			return root;
 		}
 	}
-	void topView(Node * root) {
+	void verticalTraversal(Node* head, map<int, int> &levelMap, int level) {
+		if (head == NULL)
+			return;
+		if (levelMap.count(level) == 0)
+			levelMap[level] = head->data;
 
+		if (level == 0 || level < 0)
+		{
+			verticalTraversal(head->left, levelMap, level - 1);
+		}
+		if (level == 0 || level > 0)
+		{
+			verticalTraversal(head->right, levelMap, level + 1);
+		}
+	}
+
+	void verticalTraversal2(Node* head, map<int, int> &levelMap, int level) {
+		if (head == NULL)
+			return;
+		if (levelMap.count(level) == 0)
+			levelMap[level] = head->data;
+
+		verticalTraversal2(head->left, levelMap, level - 1);
+		verticalTraversal2(head->right, levelMap, level + 1);
+	}
+
+
+	void topView(Node * root) {
 		if (root == NULL)
 			return;
 
-		queue<Node*>q;
-		map<int, int> m;
-		int hdLeft = 0;
-		int hdRight = 0;
+		map<int, int> levelMap;
+		verticalTraversal(root, levelMap, 0);
+		verticalTraversal2(root, levelMap, 0);
 
-		q.push(root);
-
-		while (q.size())
-		{
-			if (m.count(hdLeft) == 0 || m.count(hdRight) == 0)
-				m[hdLeft] = root->data;
-			if (root->left)
-			{
-				hdLeft = hdLeft - 1;
-				q.push(root->left);
-			}
-			if (root->right)
-			{
-				hdRight = hdRight + 1;
-				q.push(root->right);
-			}
-			q.pop();
-			
-			if (q.size() > 0)
-				root = q.front();
-
+		for (map<int, int>::iterator it = levelMap.begin(); it != levelMap.end(); ++it) {
+			cout << it->second << ' ';
 		}
-
-		for (auto i = m.begin(); i != m.end(); i++)
-		{
-			cout << i->second << " ";
-		}
-
 	}
 };
 
