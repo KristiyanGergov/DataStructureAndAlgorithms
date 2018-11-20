@@ -19,12 +19,4 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="Task-Example.PNG">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Task.PNG">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
 </Project>
