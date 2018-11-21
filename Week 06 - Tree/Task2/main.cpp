@@ -18,7 +18,7 @@ public:
 
 class Solution {
 public:
-	Node* insert(Node* root, int data) {
+	Node * insert(Node* root, int data) {
 		if (root == NULL) {
 			return new Node(data);
 		}
@@ -52,14 +52,22 @@ public:
 		}
 	}
 
-	void verticalTraversal2(Node* head, map<int, int> &levelMap, int level) {
+	void findTheRest(Node* head, map<int, int> &levelMap, int level, bool lastLeft) {
 		if (head == NULL)
 			return;
 		if (levelMap.count(level) == 0)
 			levelMap[level] = head->data;
 
-		verticalTraversal2(head->left, levelMap, level - 1);
-		verticalTraversal2(head->right, levelMap, level + 1);
+		if (lastLeft)
+		{
+			findTheRest(head->left, levelMap, level - 1, true);
+			findTheRest(head->right, levelMap, level + 1, false);
+		}
+		else
+		{
+			findTheRest(head->right, levelMap, level + 1, false);
+			findTheRest(head->left, levelMap, level - 1, true);
+		}
 	}
 
 
@@ -69,7 +77,7 @@ public:
 
 		map<int, int> levelMap;
 		verticalTraversal(root, levelMap, 0);
-		verticalTraversal2(root, levelMap, 0);
+		findTheRest(root, levelMap, 0, true);
 
 		for (map<int, int>::iterator it = levelMap.begin(); it != levelMap.end(); ++it) {
 			cout << it->second << ' ';

@@ -37,6 +37,8 @@ public:
 
 	int height(Node* root) {
 	
+		int a = NULL;
+
 		if (root == NULL)
 			return -1;
 
@@ -51,6 +53,12 @@ public:
 };
 
 int main() {
+
+	int* arr = new int[5];
+
+	arr[-1] = 4;
+	arr[-2] = 3;
+
 
 	Solution myTree;
 	Node* root = NULL;
