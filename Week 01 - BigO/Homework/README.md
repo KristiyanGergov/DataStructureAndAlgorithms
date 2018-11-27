@@ -73,15 +73,15 @@ void bubbleSort(int* array, int length)
     }
 }
 
--Time complexity: O(length^2)
--Space complexity: O(1) = const
--Stable: 1
--Number of Comparisons: length^2
--Number of Swaps: length^2
--Online: 0
--In-Place: 1
--Out-Place: 0
--Adaptive: 1 
+ - Time complexity: O(length^2)
+ - Space complexity: O(1) = const
+ - Stable: 1
+ - Number of Comparisons: length^2
+ - Number of Swaps: length^2
+ - Online: 0
+ - In-Place: 1
+ - Out-Place: 0
+ - Adaptive: 1 
 
 
 Оптимизирана имплементация:
