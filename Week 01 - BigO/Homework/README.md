@@ -37,9 +37,9 @@ Insertion Sort - e
 ##Task: Ако са зададени лист от обекти които имплементират < може ли да се сортира листа
 Example: A < B, B < C, C < A
  -не защото 
-    1. Ако А <= B и B <= A, то А = B (Антисиметричност)
-    2. Ако А <= B и B <= С то А <=С (транзитивност)
-    3. Всяко А<=А (Рефлективност)
+   - 1. Ако А <= B и B <= A, то А = B (Антисиметричност)
+   - 2. Ако А <= B и B <= С то А <=С (транзитивност)
+   - 3. Всяко А<=А (Рефлективност)
 
 
 ##Bubble Sort
@@ -50,12 +50,12 @@ e.g. : (1) (2) (4) (2) (4) (5)
 
 да си го представим вертикално => колкото по голяма тежест има ще се опита да изплува нагоре
 
-(1)      (5)     
-(2)      (4)
-(4)      (4)
-(2)      (2)
-(4)      (2)
-(5)      (1)
+- (1)      (5)     
+- (2)      (4)
+- (4)      (4)
+- (2)      (2)
+- (4)      (2)
+- (5)      (1)
 
 Базова имплементация:
 
@@ -122,15 +122,15 @@ void selectionSort(int * array){
 
 3 2 8 7 5
 
--Time complexity: O(p^2)
--Space complexity: O(1) = const
--Stable: 1
--Number of Comparisons: p^2
--Number of Swaps: p
--Online: 0
--In-Place: 1
--Out-Place: 0
--Adaptive: 1
+ - Time complexity: O(p^2)
+ - Space complexity: O(1) = const
+ - Stable: 1
+ - Number of Comparisons: p^2
+ - Number of Swaps: p
+ - Online: 0
+ - In-Place: 1
+ - Out-Place: 0
+ - Adaptive: 1
 
 ##Insertion Sort
 
@@ -208,17 +208,17 @@ arr_3_4_sorted = { 1, 2, 3, 4, 5, 6 }
 {1, 2, 3, 4, 5, 6, 7, 8}
 
 
--Time complexity: O(n*logn)
--Space complexity: O(n)
--Stable: 1
--Number of Comparisons: n
--Number of Swaps: n
--Online: 1
--In-Place: 0
--Out-Place: 1
--Adaptive: 0
--Parallel: 1
--External: 1
+ - Time complexity: O(n*logn)
+ - Space complexity: O(n)
+ - Stable: 1
+ - Number of Comparisons: n
+ - Number of Swaps: n
+ - Online: 1
+ - In-Place: 0
+ - Out-Place: 1
+ - Adaptive: 0
+ - Parallel: 1
+ - External: 1
 
 
 ##TimSort
@@ -227,16 +227,16 @@ arr_3_4_sorted = { 1, 2, 3, 4, 5, 6 }
 
 
 
--Time complexity: O(n*logn) (worst case) O(n) (best case)
--Space complexity: O(n)
--Stable: 1
--Number of Comparisons: n
--Number of Swaps: n
--Online: 1
--In-Place: 0
--Out-Place: 1
--Adaptive: 0
--Parallel: 1
--External: 1
+ - Time complexity: O(n*logn) (worst case) O(n) (best case)
+ - Space complexity: O(n)
+ - Stable: 1
+ - Number of Comparisons: n
+ - Number of Swaps: n
+ - Online: 1
+ - In-Place: 0
+ - Out-Place: 1
+ - Adaptive: 0
+ - Parallel: 1
+ - External: 1
 
 
