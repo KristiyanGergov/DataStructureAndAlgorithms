@@ -118,7 +118,11 @@ LinkedList<T> merge(LinkedList<T> first, LinkedList<T> second) {
 	return first;
 }
 
+
 int main() {
+
+	int n = 15;
+	int arr[n];
 	LinkedList<int> list = LinkedList<int>();
 
 	list.add(1);
