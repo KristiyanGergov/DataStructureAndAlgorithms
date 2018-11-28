@@ -12,15 +12,15 @@ struct Node
 		right = NULL;
 	}
 };
-class BST
+class BinarysearchTree
 {
 
 public:
-	BST()
+	BinarysearchTree()
 	{
 		root = nullptr;
 	}
-	void insertEl(int value)
+	void insert(int value)
 	{
 		if (root == nullptr)
 		{
@@ -45,12 +45,9 @@ public:
 			}
 			else if (value > curr->data)
 			{
-
 				if (curr->right == NULL)
 				{
-
 					curr->right = temp;
-
 					break;
 				}
 				else
@@ -76,7 +73,7 @@ public:
 	{
 		inorder(root);
 	}
-	bool Search(int key)
+	bool search(int key)
 	{
 		if (root == nullptr) return false;
 		if (root->data == key)
@@ -86,12 +83,12 @@ public:
 		else if (key < root->data)
 		{
 			root = root->left;
-			return Search(key);
+			return search(key);
 		}
 		else
 		{
 			root = root->right;
-			return Search(key);
+			return search(key);
 		}
 	}
 	int height()
@@ -100,12 +97,11 @@ public:
 	}
 	int countNodes()
 	{
-		int n = 0;
-		return nodesCount(this->root, n);
+		return nodesCount(this->root, 0);
 	}
-	Node*  DeleteR(int key)
+	Node*  deleteElR(int key)
 	{
-		return Delete(root, key);
+		return deleteEl(root, key);
 	}
 	void LeverOrder() {
 		return print(root);
@@ -139,20 +135,15 @@ private:
 		postorder(root->right);
 		cout << root->data << " ";
 	}
-	int nodesCount(Node *root, int &count)
+	int nodesCount(Node *root, int count)
 	{
 
-		if (root != nullptr)//if we are not at a leaf
-		{
-			count++;
-			nodesCount(root->left, count);//recurisvly call the function and increment the count
-			nodesCount(root->right, count);
-		}
-		else
-		{
-			return count;//return the count
-		}
+		if (root == nullptr)
+			return count;
 
+		count++;
+		nodesCount(root->left, count);
+		nodesCount(root->right, count);
 	}
 	int heightN(Node *root)
 	{
@@ -173,7 +164,7 @@ private:
 			else return (Rheight + 1);
 		}
 	}
-	Node* FindMin(Node* root)
+	Node* findMin(Node* root)
 	{
 		while (root->left != nullptr)
 		{
@@ -182,21 +173,19 @@ private:
 		return root;
 	}
 
-	Node* Delete(Node *root, int data)
+	Node* deleteEl(Node *root, int data)
 	{
 		if (root != nullptr)
 		{
-			if (data < root->data) root->left = Delete(root->left, data);
-			else if (data > root->data) root->right = Delete(root->right, data);
+			if (data < root->data) root->left = deleteEl(root->left, data);
+			else if (data > root->data) root->right = deleteEl(root->right, data);
 			else
 			{
-				// Case 1:  No child
 				if (root->left == nullptr && root->right == nullptr)
 				{
 					delete root;
 					root = nullptr;
 				}
-				//Case 2: One child
 				else if (root->left == nullptr)
 				{
 					struct Node *temp = root;
@@ -209,12 +198,11 @@ private:
 					root = root->left;
 					delete temp;
 				}
-				// case 3: 2 children
 				else
 				{
-					struct Node *temp = FindMin(root->right);
+					struct Node *temp = findMin(root->right);
 					root->data = temp->data;
-					root->right = Delete(root->right, temp->data);
+					root->right = deleteEl(root->right, temp->data);
 				}
 			}
 		}
@@ -241,11 +229,11 @@ private:
 };
 int main()
 {
-	BST t;
+	BinarysearchTree t;
 	int n;
 	while (cin >> n)
 	{
-		t.insertEl(n);
+		t.insert(n);
 	}
 	t.inorder();
 	cout << endl;
@@ -255,7 +243,7 @@ int main()
 	cout << endl;
 	cout << t.height() << endl;
 	cout << t.countNodes() << endl;
-	t.DeleteR(5);
+	t.deleteElR(5);
 	t.LeverOrder();
 	return 0;
 }
