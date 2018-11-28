@@ -186,8 +186,7 @@ int main()
 
 		if (minHeapSize + 1 < maxHeapSize)
 		{
-			minHeap.push(maxHeap.top());
-			maxHeap.pop();
+			minHeap.push(maxHeap.pop());
 		}
 		else if (maxHeapSize + 1 < minHeapSize)
 		{
