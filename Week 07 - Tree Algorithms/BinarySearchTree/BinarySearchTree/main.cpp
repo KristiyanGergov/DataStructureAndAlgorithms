@@ -12,11 +12,11 @@ struct Node
 		right = NULL;
 	}
 };
-class BinarysearchTree
+class BinarySearchTree
 {
 
 public:
-	BinarysearchTree()
+	BinarySearchTree()
 	{
 		root = nullptr;
 	}
@@ -229,21 +229,21 @@ private:
 };
 int main()
 {
-	BinarysearchTree t;
+	BinarySearchTree binaryTree;
 	int n;
 	while (cin >> n)
 	{
-		t.insert(n);
+		binaryTree.insert(n);
 	}
-	t.inorder();
+	binaryTree.inorder();
 	cout << endl;
-	t.postorder();
+	binaryTree.postorder();
 	cout << endl;
-	t.preorder();
+	binaryTree.preorder();
 	cout << endl;
-	cout << t.height() << endl;
-	cout << t.countNodes() << endl;
-	t.deleteElR(5);
-	t.LeverOrder();
+	cout << binaryTree.height() << endl;
+	cout << binaryTree.countNodes() << endl;
+	binaryTree.deleteElR(5);
+	binaryTree.LeverOrder();
 	return 0;
 }
