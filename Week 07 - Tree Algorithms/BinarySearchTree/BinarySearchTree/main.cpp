@@ -61,6 +61,7 @@ public:
 			}
 		}
 	}
+
 	void preorder()
 	{
 		preorder(root);
@@ -97,7 +98,8 @@ public:
 	}
 	int countNodes()
 	{
-		return nodesCount(this->root, 0);
+		int n = 0;
+		return nodesCount(this->root, n);
 	}
 	Node*  deleteElR(int key)
 	{
@@ -135,15 +137,19 @@ private:
 		postorder(root->right);
 		cout << root->data << " ";
 	}
-	int nodesCount(Node *root, int count)
+	int nodesCount(Node *root, int &count)
 	{
+		if (root != nullptr)
+		{
+			count++;
+			nodesCount(root->left, count);
+			nodesCount(root->right, count);
+		}
+		else
+		{
+			return count;//return the count
+		}
 
-		if (root == nullptr)
-			return count;
-
-		count++;
-		nodesCount(root->left, count);
-		nodesCount(root->right, count);
 	}
 	int heightN(Node *root)
 	{
