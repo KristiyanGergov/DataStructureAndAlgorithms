@@ -35,3 +35,59 @@ void dijkstra(int start, vector<int> & dist, vector<int> & p, vector<vector<pair
 		}
 	}
 }
+
+
+int main() {
+
+	int t;
+
+	cin >> t;
+
+	vector<int> dist;
+
+	for (int i = 0; i < t; i++)
+	{
+		int vertices, edges;
+		cin >> vertices;
+		cin >> edges;
+
+		vector<vector<pair<int, int>>> adj(vertices + 1);
+
+
+		for (int j = 0; j < edges; j++)
+		{
+			int startVertex, endVertex, weight;
+
+			cin >> startVertex;
+			cin >> endVertex;
+			cin >> weight;
+
+			pair<int, int> pair1 = { startVertex, weight };
+
+			pair<int, int> pair2 = { endVertex, weight };
+
+			adj[endVertex].push_back(pair1);
+			adj[startVertex].push_back(pair2);
+		}
+
+		int start;
+		cin >> start;
+
+		vector<int> dist;
+		vector<int> p;
+
+		dijkstra(start, dist, p, adj);
+
+		for (int i = 1; i < dist.size(); i++)
+		{
+			if (i == start)
+				continue;
+
+			cout << dist[i] << " ";
+		}
+		cout << endl;
+	}
+
+	system("pause");
+	return 0;
+}	

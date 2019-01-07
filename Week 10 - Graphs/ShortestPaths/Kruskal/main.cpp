@@ -4,28 +4,28 @@
 using namespace std;
 
 struct Edge {
-	int u, v, weight;
+	int startVertex, endVertex, weight;
 	bool operator<(Edge const& other) {
 		return weight < other.weight;
 	}
 };
 
-void findShortestPath(int n, vector<Edge> edges) {
+void findShortestPath(int vertices, vector<Edge> edges) {
 	int cost = 0;
-	vector<int> tree_id(n);
+	vector<int> tree_id(vertices);
 	vector<Edge> result;
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < vertices; i++)
 		tree_id[i] = i;
 
 	sort(edges.begin(), edges.end());
 
 	for (Edge e : edges) {
-		if (tree_id[e.u] != tree_id[e.v]) {
+		if (tree_id[e.startVertex] != tree_id[e.endVertex]) {
 			cost += e.weight;
 			result.push_back(e);
 
-			int old_id = tree_id[e.u], new_id = tree_id[e.v];
-			for (int i = 0; i < n; i++) {
+			int old_id = tree_id[e.startVertex], new_id = tree_id[e.endVertex];
+			for (int i = 0; i < vertices; i++) {
 				if (tree_id[i] == old_id)
 					tree_id[i] = new_id;
 			}

@@ -117,7 +117,7 @@ public:
 
 	void add(double value)
 	{
-		insert(root, value);
+		root = insert(root, value);
 	}
 
 	Node* insert(Node* node, double key)
@@ -125,7 +125,6 @@ public:
 
 		if (root == NULL)
 		{
-			root = newNode(key);
 			return root;
 		}
 
@@ -169,16 +168,18 @@ public:
 
 	void remove(double value)
 	{
-		deleteNode(root, value);
+		if (!contains(value)) {
+			cout << value << " not found to remove" << endl;
+			return;
+		}
+		root = deleteNode(root, value);
 	}
 
 	Node* deleteNode(Node* root, double key)
 	{
 		if (root == NULL)
-		{
-			cout << key << " not found to remove" << endl;
 			return root;
-		}
+		
 		if (key < root->value)
 			root->left = deleteNode(root->left, key);
 
