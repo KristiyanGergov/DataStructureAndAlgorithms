@@ -60,9 +60,10 @@ int main() {
 
 	dijkstra(s, dist, adj);
 
-	cout << dist.at(t);
-
-	//system("pause");
+	if (dist.at(t) == 0)
+		cout << -1;
+	else
+		cout << dist.at(t);
 
 	return 0;
 }
