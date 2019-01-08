@@ -5,7 +5,9 @@ using namespace std;
 
 const int INF = 0;
 
-void dijkstra(int start, vector<int> & dist, vector<vector<pair<int, int>>> & adj) {
+vector<int> dijkstraReversed(int start, vector<vector<pair<int, int>>> & adj) {
+	vector<int> dist;
+
 	int vertices = adj.size();
 	dist.assign(vertices, INF);
 
@@ -30,6 +32,7 @@ void dijkstra(int start, vector<int> & dist, vector<vector<pair<int, int>>> & ad
 			}
 		}
 	}
+	return dist;
 }
 
 int main() {
@@ -56,9 +59,7 @@ int main() {
 		adj[v1].push_back(pair);
 	}
 
-	vector<int> dist;
-
-	dijkstra(s, dist, adj);
+	vector<int> dist = dijkstraReversed(s, adj);
 
 	if (dist.at(t) == 0)
 		cout << -1;
