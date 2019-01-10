@@ -7,10 +7,11 @@ using namespace std;
 
 const int INF = 1000000000;
 
-void dijkstra(int start, vector<int> & dist, vector<int> & p, vector<vector<pair<int, int>>> & adj) {
+vector<int> dijkstra(int start, vector<vector<pair<int, int>>> & adj) {
+	vector<int> dist;
+
 	int vertices = adj.size();
 	dist.assign(vertices, INF);
-	p.assign(vertices, -1);
 
 	dist[start] = 0;
 	using pii = pair<int, int>;
@@ -29,16 +30,16 @@ void dijkstra(int start, vector<int> & dist, vector<int> & p, vector<vector<pair
 
 			if (dist[endVertex] + len < dist[to]) {
 				dist[to] = dist[endVertex] + len;
-				p[to] = endVertex;
 				q.push({ dist[to], to });
 			}
 		}
 	}
+	return dist;
 }
 
 
 int main() {
-
+	ios_base::sync_with_stdio(false);
 	int t;
 
 	cin >> t;
@@ -62,32 +63,30 @@ int main() {
 			cin >> endVertex;
 			cin >> weight;
 
-			pair<int, int> pair1 = { startVertex, weight };
-
-			pair<int, int> pair2 = { endVertex, weight };
-
-			adj[endVertex].push_back(pair1);
-			adj[startVertex].push_back(pair2);
+			adj[endVertex].push_back({ startVertex, weight });
+			adj[startVertex].push_back({ endVertex, weight });
 		}
 
 		int start;
 		cin >> start;
 
-		vector<int> dist;
-		vector<int> p;
-
-		dijkstra(start, dist, p, adj);
+		vector<int> dist = dijkstra(start, adj);
 
 		for (int i = 1; i < dist.size(); i++)
 		{
 			if (i == start)
 				continue;
 
+			if (dist[i] == INF)
+			{
+				cout << -1 << " ";
+				continue;
+			}
 			cout << dist[i] << " ";
 		}
 		cout << endl;
 	}
 
-	system("pause");
+	//system("pause");
 	return 0;
-}	
+}

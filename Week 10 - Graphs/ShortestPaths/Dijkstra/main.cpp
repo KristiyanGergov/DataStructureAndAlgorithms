@@ -2,15 +2,45 @@
 #include <iostream>
 #include <algorithm>
 #include <queue>
+#include <set>
 
 using namespace std;
 
 const int INF = 1000000000;
 
-void dijkstra(int start, vector<int> & dist, vector<int> & p, vector<vector<pair<int, int>>> & adj) {
+void dijkstra(int s, vector<int> & d, vector<int> & p, vector<vector<pair<int, int>>> adj) {
+	int n = adj.size();
+	d.assign(n, INF);
+	p.assign(n, -1);
+
+	d[s] = 0;
+	set<pair<int, int>> q;
+	q.insert({ 0, s });
+	while (!q.empty()) {
+		int v = q.begin()->second;
+		q.erase(q.begin());
+
+		for (auto edge : adj[v]) {
+			int to = edge.first;
+			int len = edge.second;
+
+			if (d[v] + len < d[to]) {
+				q.erase({ d[to], to });
+				d[to] = d[v] + len;
+				p[to] = v;
+				q.insert({ d[to], to });
+			}
+		}
+	}
+}
+
+
+vector<int> dijkstra(int start, vector<vector<pair<int, int>>> & adj) {
+	
+	vector<int> dist;
+
 	int vertices = adj.size();
 	dist.assign(vertices, INF);
-	p.assign(vertices, -1);
 
 	dist[start] = 0;
 	using pii = pair<int, int>;
@@ -29,9 +59,10 @@ void dijkstra(int start, vector<int> & dist, vector<int> & p, vector<vector<pair
 
 			if (dist[endVertex] + len < dist[to]) {
 				dist[to] = dist[endVertex] + len;
-				p[to] = endVertex;
 				q.push({ dist[to], to });
 			}
 		}
 	}
+
+	return dist;
 }
